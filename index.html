@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+    body{
+      width: 100%;
+      text-align: center;
+      font-size: 1..05rem;
+    }
+
+    p{
+      font-weight: bolder;
+      font-size: 2rem;
+      margin-top: 5%;
+    }
+
+
+    .button{
+      font-size: 2rem;
+      margin-top: 2.5%;
+    }
+
+    img{
+      transform: rotate(90deg);
+      margin-top: 5%;
+    }
+
+    </style>
+    <title>le choix d'Imane</title>
+
+    </script>
+  </head>
+  <body>
+    <div class="random_choice">
+      <h2>Imane pour quel formation est tu faite ??</h2>
+      <img src="IMG_3957.JPG" alt="imane" style="width:25%;"/>
+      <p class="result"></p>
+    </div>
+    <input type="button" class="button" value="GO !" onclick="start(50,25)"/>
+
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+    function shuffle(array) {
+      var currentIndex = array.length, temporaryValue, randomIndex;
+
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+      return array;
+    }
+
+
+    function random_games(){
+      var formation =["JS","JAVA"]
+      shuffle(formation);
+
+
+
+      $('.result').html(' ');
+          $('.result').append(formation[1]);
+
+}
+    function start(sec,inter){
+      var toto = 0;
+    var interval = setInterval(function(){
+      toto++;
+      random_games();
+    console.log(toto);
+    if(toto > inter){
+      sec = sec * 1.2;
+      inter = inter - 5;
+      console.log('sec='+sec+'   inter='+inter);
+      clearInterval(interval);
+      if(inter>=0){
+        start2(sec,inter);
+      }
+    }
+    }, sec);
+    }
+
+    function start2(sec,inter){
+      var toto = 0;
+    var interval = setInterval(function(){
+      toto++;
+      random_games();
+    console.log(toto);
+    if(toto >= inter){
+      sec = sec * 1.2;
+      inter = inter - 5;
+      console.log('sec='+sec+'   inter='+inter);
+      clearInterval(interval);
+      if(inter>=0){
+        start(sec,inter);
+      }
+    }
+
+    }, sec);
+
+
+    }
+    </script>
+  </body>
+</html>
